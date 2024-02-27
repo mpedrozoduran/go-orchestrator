@@ -1,0 +1,10 @@
+server:
+  port: 8080
+bank:
+  url: http://mockServer:1080/api/v1/bank/integrations/payment
+database:
+  url: http://localstack:4566
+auth:
+  secretKey: qwerty
+  username: dummy
+  password: dummy

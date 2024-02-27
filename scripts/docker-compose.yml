@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+
+  app:
+    image: app:latest
+    environment:
+      - AWS_ACCESS_KEY_ID=abc
+      - AWS_SECRET_ACCESS_KEY=abc
+      - AWS_SESSION_TOKEN=abc
+    ports:
+      - "8080:8080"
+    links:
+      - localstack
+      - mockServer
+    depends_on:
+      - localstack
+      - mockServer
+
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME:-localstack-main}"
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"
+      - "127.0.0.1:4510-4559:4510-4559"
+    environment:
+      - DEBUG=${DEBUG:-0}
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  mockServer:
+    image: mockserver/mockserver:mockserver-snapshot
+    ports:
+      - "1080:1080"
+    environment:
+      MOCKSERVER_PROPERTY_FILE: /config/mockserver.properties
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /config/initializerJson.json
+    volumes:
+      - type: bind
+        source: ./mockserver/config
+        target: /config

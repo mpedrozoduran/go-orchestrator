@@ -1,0 +1,43 @@
+[
+  {
+    "httpRequest" : {
+      "method" : "POST",
+      "path" : "/api/v1/bank/integrations/payment/success"
+    },
+    "httpResponse" : {
+      "body" : "{\"trx_id\":\"62acd9d7-de79-486a-9aef-b19474a36d88\", \"status\": \"APPROVED\", \"code\":10001, \"date\":\"2024-02-26T00:38:41\n\"}",
+      "statusCode": 200
+    }
+  },
+  {
+    "httpRequest" : {
+      "method" : "POST",
+      "path" : "/api/v1/bank/integrations/payment/failure"
+    },
+    "httpResponse" : {
+      "body" : "{\"trx_id\":\"16c934a9-bf3a-44f8-a18a-63a7010965a8\", \"status\": \"REJECTED\", \"code\":90001, \"reason\":\"Insufficient Funds\n\", \"date\":\"2024-02-26T00:38:41\n\"}",
+      "statusCode": 404
+    }
+  },
+  {
+    "httpRequest" : {
+      "method" : "POST",
+      "path" : "/api/v1/bank/integrations/payment/refund/success"
+    },
+    "httpResponse" : {
+      "body" : "{\"trx_id\":\"ad1633cc-7cee-46e2-a125-30df64492921\", \"status\": \"APPROVED\", \"code\":10002, \"date\":\"2024-02-26T00:38:41\n\"}",
+      "statusCode": 200
+    }
+  },
+  {
+    "httpRequest" : {
+      "method" : "POST",
+      "path" : "/api/v1/bank/integrations/payment/refund/failure"
+    },
+    "httpResponse" : {
+      "body" : "{\"trx_id\":\"a9ee2ca4-ed83-4f7d-90b2-c014dac5ac2b\", \"status\": \"REJECTED\", \"code\":90009, \"reason\":\"Service Unavailable\n\", \"date\":\"2024-02-26T00:38:41\n\"}",
+      "statusCode": 500
+    }
+  }
+]
+
