@@ -21,4 +21,4 @@ run-local:
 	./scripts/deps.sh
 
 
-.PHONY: build fmt lint test run
+.PHONY: build fmt lint test run run-local
